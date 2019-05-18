@@ -6,6 +6,12 @@ function checkType(req, res, next) {
         res.status(400).json({ message: "ID must be an integer" });
       }
     }
+    //type check for tag
+    if (typeof req.query.tag !== "undefined") {
+        if (typeof req.query.tag !== "string"){
+          res.status(400).json({ message: "tag must be a string" });
+        }
+      }
     //type check for dates
     if (
       typeof req.query.startDate !== "undefined" &&
@@ -52,7 +58,7 @@ function checkType(req, res, next) {
     var startDate = req.query.startDate;
     var endDate = req.query.endDate;
     if (typeof startDate !== "undefined" && typeof endDate !== "undefined") {
-      return date >= new Date(startDate) && new Date(date <= endDate);
+      return date >= new Date(startDate) && date <= new Date(endDate);
     } else if (typeof startDate !== "undefined") {
       return date >= new Date(startDate);
     } else if (typeof endDate !== "undefined") {
