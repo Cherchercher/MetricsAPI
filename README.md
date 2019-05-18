@@ -1,4 +1,4 @@
-#REST API for http based metrics visualization dashboard 
+REST API for http based metrics visualization dashboard 
 
 **Get Time Series**
 ----
@@ -33,8 +33,10 @@
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "Data doesn't exist" }`
+    **Content:** `{ error : "No Data Found" }`
 
+   * **Code:** 400 Bad Request <br />
+    **Content:** `{ error : "ID must be an integer" }`
 
 * **Sample Call:**
 
@@ -50,23 +52,14 @@ GET localhost:5000/data?tag=happy&startDate="1992-05-01"&endDate="1992-05-01"
   Run server: node_modules/.bin/babel-node app.js <br />
 
   #  Tools
- This will be a Single Page App built with React.js frontend, Node.js for server-side scripting, and Redux for state management. 
+ This will be a Single Page App built with React.js frontend, Node.js + Express.js for server-side scripting, and Redux for state management. 
  
  We'll follow Material Design practice and use Material UI Framework for the interface. For charts and visualizations, we can use the react-apexcharts package.
  
- 
    #  User Interface
-  User can input ID or tag filtered by date for queries. 
-  
-  On query submit, dashboard will populated with visualization of the time series data, or displayed a message saying "no result found." 
-  
-  On laptop/PC, The dashboard displays up to 6 visualizations, and users can click on a visualization to full screen mode to view details. 
-  
-  If more than 6 visualizations are needed, dashboard content will shuffle every minute when no user activity is detected, with the option to switch to different pages with navigation button.
-  
-  For each visualization, there will be a button to calculate average given a time range (default is the whole range).
+  User can input ID or tag filtered by date for queries. On query submit, dashboard will populated with visualization of the time series data, or displayed a message saying "no result found." On laptop/PC, The dashboard displays up to 6 visualizations, and users can click on a visualization to full screen mode to view details. If more than 6 visualizations are needed, dashboard content will shuffle every minute when no user activity is detected, with the option to switch to different pages with navigation button. For each visualization, there will be a button to calculate average given a time range (default is the whole range).
 
-# Requirement/Limitations
+# Requirements/Limitations
  A dummy database is used in this short project. 
  
  example data:
